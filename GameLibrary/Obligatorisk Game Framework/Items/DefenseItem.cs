@@ -8,6 +8,7 @@ namespace Obligatorisk_Game_Framework.Items
     {
         public string Name { get; set; }
         public int Id { get; set; }
+        public string Slot { get; set; }
     }
 
 }

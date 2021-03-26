@@ -13,14 +13,14 @@ namespace Obligatorisk_Game_Framework.Creature
     public class GearLoadOut
     {
         #region InstanceField
-        private readonly IWearable _defaultDefenseItem;
-        private readonly IWearable _defaultAttackItem;
+        private readonly DefenseItem _defaultDefenseItem;
+        private readonly AttackItem _defaultAttackItem;
         private readonly IWearable _defaultMiscItem;
         #endregion
 
 
         #region Constructor
-        protected GearLoadOut(IGearSlots gearSlots, IWearable defaultDefenseItem = null, IWearable defaultAttackItem = null, IWearable defaultMiscItem = null)
+        protected GearLoadOut(IGearSlots gearSlots, DefenseItem defaultDefenseItem = null, AttackItem defaultAttackItem = null, IWearable defaultMiscItem = null)
         {
             //Loading default items
             _defaultDefenseItem = defaultDefenseItem;
@@ -29,8 +29,8 @@ namespace Obligatorisk_Game_Framework.Creature
 
 
             //Instantiating the object for keeping track of worn items
-            DefenseItems = new Dictionary<string, IWearable>();
-            AttackItems = new Dictionary<string, IWearable>();
+            DefenseItems = new Dictionary<string, DefenseItem>();
+            AttackItems = new Dictionary<string, AttackItem>();
             MiscItems = new Dictionary<string, IWearable>();
 
 
@@ -55,29 +55,44 @@ namespace Obligatorisk_Game_Framework.Creature
 
 
         #region Properties
-        public Dictionary<string, IWearable> DefenseItems { get; set; }
-        public Dictionary<string, IWearable> AttackItems { get; set; }
+        public Dictionary<string, DefenseItem> DefenseItems { get; set; }
+        public Dictionary<string, AttackItem> AttackItems { get; set; }
         public Dictionary<string, IWearable> MiscItems { get; set; }
         #endregion
 
 
         #region Methods
-        public MoveItemResponse EquipItem(IWearable item)
+        public EquipItemResponse EquipItem(IWearable item)
         {
             if (item.GetType().IsSubclassOf(typeof(AttackItem)))
             {
-
+                if (AttackItems.ContainsKey(item.Slot))
+                {
+                    AttackItems[item.Slot] = (AttackItem)item;
+                    return new EquipItemResponse(); 
+                }
             }
 
             if (item.GetType().IsSubclassOf(typeof(DefenseItem)))
             {
-
+                if (DefenseItems.ContainsKey(item.Slot))
+                {
+                    DefenseItems[item.Slot] = (DefenseItem)item;
+                    return new EquipItemResponse();
+                }
             }
-            return new MoveItemResponse();
-        }
-        public MoveItemResponse DeEquipItem(IWearable item)
-        {
 
+            if (MiscItems.ContainsKey(item.Slot))
+            {
+                MiscItems[item.Slot] = item;
+                return new EquipItemResponse();
+            }
+
+            return new EquipItemResponse();
+        }
+        public EquipItemResponse DeEquipItem(IWearable item)
+        {
+            return new EquipItemResponse();
         }
         #endregion
     }
