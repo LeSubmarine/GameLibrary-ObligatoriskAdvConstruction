@@ -8,11 +8,22 @@ namespace Obligatorisk_Game_Framework.Responses
     public class MoveItemResponse : IResponse
     {
         #region Constructor
+        /// <summary>
+        /// Empty constructor, defaults SuccessValue to false.
+        /// </summary>
         public MoveItemResponse()
         {
             SuccessValue = false;
         }
-        public MoveItemResponse(string target, string origin,IEnumerable<IItem> value = null)
+
+        /// <summary>
+        /// Constructor to define description, who is receiving, who is sending, what items.
+        /// </summary>
+        /// <param name="description">Describes the transaction of items.</param>
+        /// <param name="target">Target represent who is receiving items.</param>
+        /// <param name="origin">Origin represent who is sending items.</param>
+        /// <param name="value">Value contains what items is being transferred.</param>
+        public MoveItemResponse(string description, string target, string origin,IEnumerable<IItem> value = null)
         {
             if (value == null)
             {
@@ -23,6 +34,7 @@ namespace Obligatorisk_Game_Framework.Responses
                 SuccessValue = true;
             }
 
+            Description = description;
             Value = value;
             Target = target;
             Origin = origin;
@@ -49,7 +61,6 @@ namespace Obligatorisk_Game_Framework.Responses
         /// </summary>
         public IEnumerable<IItem> Value { get; set; }
         #endregion
-
 
 
         #region Methods
