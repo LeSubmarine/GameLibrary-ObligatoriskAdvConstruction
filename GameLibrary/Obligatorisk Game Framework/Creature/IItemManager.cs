@@ -39,6 +39,27 @@ namespace Obligatorisk_Game_Framework.Creature
         /// <param name="item">The item that is to be removed from GearLoadOut.</param>
         /// <returns>Returns an IResponse for information of the operation.</returns>
         public delegate IResponse DeEquipGear(IWearable item);
+
+
+        /// <summary>
+        /// Adds an IItem to the inventory.
+        /// </summary>
+        /// <param name="item">item is the IItem object getting added to the inventory.</param>
+        /// <returns>Returns a IResponse describing the operation.</returns>
+        public delegate IResponse AddItem(IItem item);
+
+        /// <summary>
+        /// Removes an IItem from the inventory, if it exists in it.
+        /// </summary>
+        /// <param name="item">item is the IItem object getting removed from the inventory.</param>
+        /// <returns>Returns a IResponse describing the operation.</returns>
+        public delegate IResponse RemoveItem(IItem item);
+
+        /// <summary>
+        /// Gets all the items in the inventory.
+        /// </summary>
+        /// <returns>Return an ItemsResponse containing all the items in the inventory.</returns>
+        public delegate ItemsResponse GetItems();
         #endregion
     }
 }

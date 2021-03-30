@@ -22,13 +22,24 @@ namespace Obligatorisk_Game_Framework.Creature
 
 
         #region Properties
+        /// <summary>
+        /// The hitpoints of the creature.
+        /// </summary>
         public int Hitpoints { get; set; }
+
+        /// <summary>
+        /// The item manager for the creature.
+        /// </summary>
         public IItemManager ItemManager { get; set; }
         #endregion
 
 
         #region Methods
-        public abstract IResponse ReceiveHit(int hit);
+        public IResponse ReceiveHit(int hit)
+        {
+            return IResponse;
+        }
+
         public abstract int Hit(int hit);
         public abstract IEnumerable<IItem> Loot();
         #endregion

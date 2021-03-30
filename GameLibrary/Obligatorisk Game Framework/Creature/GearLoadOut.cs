@@ -15,8 +15,8 @@ namespace Obligatorisk_Game_Framework.Creature
     {
         #region InstanceField
         //TODO fix for json saving
-        private readonly DefenseItem _defaultDefenseItem;
-        private readonly AttackItem _defaultAttackItem;
+        private readonly IDefenseItem _defaultDefenseItem;
+        private readonly IAttackItem _defaultAttackItem;
         private readonly IWearable _defaultMiscItem;
         #endregion
 
@@ -29,7 +29,7 @@ namespace Obligatorisk_Game_Framework.Creature
         /// <param name="defaultDefenseItem">The default item for defense items, defaults to null.</param>
         /// <param name="defaultAttackItem">The default item for attack items, defaults to null.</param>
         /// <param name="defaultMiscItem">The default item for miscellaneous items, defaults to null.</param>
-        public GearLoadOut(IGearSlots gearSlots, DefenseItem defaultDefenseItem = null, AttackItem defaultAttackItem = null, IWearable defaultMiscItem = null)
+        public GearLoadOut(GearSlots gearSlots, IDefenseItem defaultDefenseItem = null, IAttackItem defaultAttackItem = null, IWearable defaultMiscItem = null)
         {
             //Loading default items
             _defaultDefenseItem = defaultDefenseItem;
@@ -38,8 +38,8 @@ namespace Obligatorisk_Game_Framework.Creature
 
 
             //Instantiating the object for keeping track of worn items
-            DefenseItems = new Dictionary<string, DefenseItem>();
-            AttackItems = new Dictionary<string, AttackItem>();
+            DefenseItems = new Dictionary<string, IDefenseItem>();
+            AttackItems = new Dictionary<string, IAttackItem>();
             MiscItems = new Dictionary<string, IWearable>();
 
 
@@ -67,12 +67,12 @@ namespace Obligatorisk_Game_Framework.Creature
         /// <summary>
         /// Stores the equipped defense items.
         /// </summary>
-        public Dictionary<string, DefenseItem> DefenseItems { get; set; }
+        public Dictionary<string, IDefenseItem> DefenseItems { get; set; }
 
         /// <summary>
         /// Stores the equipped attack items.
         /// </summary>
-        public Dictionary<string, AttackItem> AttackItems { get; set; }
+        public Dictionary<string, IAttackItem> AttackItems { get; set; }
 
         /// <summary>
         /// Stores the equipped miscellaneous items.
@@ -91,14 +91,14 @@ namespace Obligatorisk_Game_Framework.Creature
         {
             Type itemType = item.GetType();
 
-            if (itemType.IsSubclassOf(typeof(AttackItem)))
+            if (itemType.IsSubclassOf(typeof(IAttackItem)))
             {
-                return ChangeItems<AttackItem>(AttackItems, (AttackItem)item);
+                return ChangeItems<IAttackItem>(AttackItems, (IAttackItem)item);
             }
 
-            if (itemType.IsSubclassOf(typeof(DefenseItem)))
+            if (itemType.IsSubclassOf(typeof(IDefenseItem)))
             {
-                return ChangeItems<DefenseItem>(DefenseItems, (DefenseItem)item);
+                return ChangeItems<IDefenseItem>(DefenseItems, (IDefenseItem)item);
             }
 
             return ChangeItems<IWearable>(MiscItems, item);
@@ -112,14 +112,14 @@ namespace Obligatorisk_Game_Framework.Creature
         public EquipItemResponse DeEquipItem(IWearable item)
         {
             Type itemType = item.GetType();
-            if (itemType.IsSubclassOf(typeof(AttackItem)))
+            if (itemType.IsSubclassOf(typeof(IAttackItem)))
             {
-                return RemoveItem<AttackItem>(AttackItems, (AttackItem)item,_defaultAttackItem);
+                return RemoveItem<IAttackItem>(AttackItems, (IAttackItem)item,_defaultAttackItem);
             } 
 
-            if (itemType.IsSubclassOf(typeof(DefenseItem)))
+            if (itemType.IsSubclassOf(typeof(IDefenseItem)))
             {
-                return RemoveItem<DefenseItem>(DefenseItems, (DefenseItem)item,_defaultDefenseItem);
+                return RemoveItem<IDefenseItem>(DefenseItems, (IDefenseItem)item,_defaultDefenseItem);
             }
             return RemoveItem<IWearable>(MiscItems,item,_defaultMiscItem);
         }

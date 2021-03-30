@@ -5,15 +5,14 @@ using Obligatorisk_Game_Framework.Items;
 
 namespace Obligatorisk_Game_Framework.Responses
 {
-    public class MoveItemResponse : IResponse
+    public class ItemsResponse : IResponse
     {
         #region Constructor
         /// <summary>
-        /// Empty constructor, defaults SuccessValue to false.
+        /// Empty constructor.
         /// </summary>
-        public MoveItemResponse()
+        public ItemsResponse()
         {
-            SuccessValue = false;
         }
 
         /// <summary>
@@ -23,7 +22,7 @@ namespace Obligatorisk_Game_Framework.Responses
         /// <param name="target">Target represent who is receiving items.</param>
         /// <param name="origin">Origin represent who is sending items.</param>
         /// <param name="value">Value contains what items is being transferred.</param>
-        public MoveItemResponse(string description, string target, string origin,IEnumerable<IItem> value = null)
+        public ItemsResponse(string description, string target, string origin,IEnumerable<IItem> value = null)
         {
             if (value == null)
             {
@@ -47,7 +46,7 @@ namespace Obligatorisk_Game_Framework.Responses
         public bool SuccessValue { get; set; }
 
         /// <summary>
-        /// Where the value was headed.
+        /// Where the value is headed.
         /// </summary>
         public string Target { get; set; }
 
@@ -57,23 +56,9 @@ namespace Obligatorisk_Game_Framework.Responses
         public string Origin { get; set; }
 
         /// <summary>
-        /// The items changing place.
+        /// The Items.
         /// </summary>
         public IEnumerable<IItem> Value { get; set; }
-        #endregion
-
-
-        #region Methods
-        /// <summary>
-        /// Creates a string based on the information available to describe the events of the operation.
-        /// </summary>
-        /// <returns>A string telling how the transaction went, and who the participants was.</returns>
-        public override string ToString()
-        {
-            //TODO make ToString to describe journey
-            StringBuilder returnString = new StringBuilder();
-            return "";
-        }
         #endregion
     }
 }

@@ -8,7 +8,7 @@ namespace Obligatorisk_Game_Framework.Creature
     /// <summary>
     /// Defines what gear slots a creatures has.
     /// </summary>
-    public interface IGearSlots
+    public class GearSlots
     {
         /// <summary>
         /// Defensive item slots available.
