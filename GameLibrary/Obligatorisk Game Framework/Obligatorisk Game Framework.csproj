@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Creature\Humanoids\" />
+    <Folder Include="Creature\Animals\" />
     <Folder Include="Responses\CombatResponses\" />
   </ItemGroup>
 

@@ -35,12 +35,8 @@ namespace Obligatorisk_Game_Framework.Creature
 
 
         #region Methods
-        public IResponse ReceiveHit(int hit)
-        {
-            return IResponse;
-        }
-
-        public abstract int Hit(int hit);
+        public abstract IResponse ReceiveHit(int hit);
+        public abstract IResponse Hit(int hit);
         public abstract IEnumerable<IItem> Loot();
         #endregion
     }

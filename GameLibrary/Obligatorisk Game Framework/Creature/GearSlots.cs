@@ -11,7 +11,7 @@ namespace Obligatorisk_Game_Framework.Creature
     public class GearSlots
     {
         /// <summary>
-        /// Defensive item slots available.
+        /// Defense item slots available.
         /// </summary>
         public string[] DefenseSlots { get; set; }
 
