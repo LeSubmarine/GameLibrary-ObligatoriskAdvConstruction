@@ -13,10 +13,16 @@ namespace Obligatorisk_Game_Framework.Items
         /// The name of the item.
         /// </summary>
         public string Name { get; set; }
-        
-        /// <summary>
-        /// The id of the item.
-        /// </summary>
-        public int Id { get; set; }
+
+        ///// <summary>
+        ///// The value of the item.
+        ///// </summary>
+        //public double Value { get; set; }
+
+
+        ///// <summary>
+        ///// The id of the item.
+        ///// </summary>
+        //public int Id { get; set; }
     }
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Obligatorisk_Game_Framework.Items
+namespace Obligatorisk_Game_Framework.Items.Animal_Items
 {
-    class AbstractLootTable
+    public class Tusk : IItem
     {
     }
 }
