@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Obligatorisk_Game_Framework.Responses;
 
 namespace Obligatorisk_Game_Framework.World
 {
@@ -17,11 +18,12 @@ namespace Obligatorisk_Game_Framework.World
         {
 
         }
+
         /// <summary>
         /// Constructor for initializing all the property of the world object.
         /// </summary>
         /// <param name="name">Name of the WorldObject.</param>
-        /// <param name="removable">Defines if the object is removable from the world or not.</param>
+        /// <param name="removable">Defines whether the object is removable from the world or not.</param>
         /// <param name="position">The position of the object.</param>
         public WorldObject(string name, bool removable, Position position)
         {
@@ -46,7 +48,15 @@ namespace Obligatorisk_Game_Framework.World
         /// <summary>
         /// Defines the position of the object.
         /// </summary>
-        public Position Position { get; set; } 
+        public Position Position { get; set; }
+        #endregion
+
+
+        #region Methods
+        public IResponse GetNeighbours(double range)
+        {
+
+        }
         #endregion
     }
 }

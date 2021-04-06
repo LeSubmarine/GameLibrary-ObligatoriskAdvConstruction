@@ -5,9 +5,4 @@
     <RootNamespace>Obligatorisk_Game_Framework</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Creature\Humanoids\" />
-    <Folder Include="Responses\CombatResponses\" />
-  </ItemGroup>
-
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Obligatorisk_Game_Framework.World
@@ -37,6 +38,12 @@ namespace Obligatorisk_Game_Framework.World
         /// The WorldObjectsManager controls all the objects in the world.
         /// </summary>
         public IWorldObjectManager WorldObjectsManager { get; set; }
+        #endregion
+
+
+        #region Methods
+        public void Act()
+        { }
         #endregion
     }
 }

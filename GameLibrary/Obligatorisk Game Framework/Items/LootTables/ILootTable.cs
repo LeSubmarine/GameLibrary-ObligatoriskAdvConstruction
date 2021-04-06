@@ -3,7 +3,7 @@ using Obligatorisk_Game_Framework.Responses;
 
 namespace Obligatorisk_Game_Framework.Items.LootTables
 {
-    interface ILootTable
+    public interface ILootTable
     {
         #region Methods
         public Dictionary<IItem, double> ItemsWithWeight();

@@ -13,7 +13,7 @@ namespace Obligatorisk_Game_Framework.Creature
     public abstract class Creature : WorldObject
     {
         #region Constructor
-        protected Creature(int hitpoints, IItemManager itemManager, string name, Position position, bool removable) : base(name,removable, position)
+        protected Creature(int hitpoints, IItemManager itemManager, string name, Position position, bool removable) : base(name, removable, position)
         {
             Hitpoints = hitpoints;
             ItemManager = itemManager;
@@ -37,7 +37,7 @@ namespace Obligatorisk_Game_Framework.Creature
         #region Methods
         public abstract IResponse ReceiveHit(int hit);
         public abstract IResponse Hit(int hit);
-        public abstract IEnumerable<IItem> Loot();
+        public abstract ItemsResponse Loot();
         #endregion
     }
 }

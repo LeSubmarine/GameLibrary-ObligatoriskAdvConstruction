@@ -22,7 +22,7 @@ namespace Obligatorisk_Game_Framework.World
         /// </summary>
         /// <param name="obj">A object of the WorldObject type to add to the world.</param>
         /// <returns>Returns a IResponse object to describe if the operation was a success.</returns>
-        public IResponse AddWorldObject(WorldObject obj); 
+        public IResponse AddWorldObject(WorldObject obj);
         #endregion
     }
 }

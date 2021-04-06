@@ -18,7 +18,17 @@ namespace Obligatorisk_Game_Framework.World
         /// <summary>
         /// Defines the absolute Y value of a position.
         /// </summary>
-        public int Y { get; set; } 
+        public int Y { get; set; }
+
+        /// <summary>
+        /// Width of the owner.
+        /// </summary>
+        public int Width { get; set; }
+
+        /// <summary>
+        /// Height of the owner.
+        /// </summary>
+        public int Height { get; set; }
         #endregion
     }
 }
