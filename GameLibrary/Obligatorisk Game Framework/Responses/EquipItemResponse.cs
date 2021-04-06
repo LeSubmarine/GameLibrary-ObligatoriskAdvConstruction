@@ -57,7 +57,6 @@ namespace Obligatorisk_Game_Framework.Responses
         #endregion
 
 
-
         #region Methods
         /// <summary>
         /// Creates a string based on the information available to describe the events of the operation.

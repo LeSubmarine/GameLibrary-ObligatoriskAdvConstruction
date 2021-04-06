@@ -87,7 +87,7 @@ namespace Obligatorisk_Game_Framework.Creature
         /// </summary>
         /// <param name="item">item is the item that is going to be equipped.</param>
         /// <returns>Returns a EquipItemResponse to describe the operation.</returns>
-        public EquipItemResponse EquipItem(IWearable item)
+        public virtual EquipItemResponse EquipItem(IWearable item)
         {
             Type itemType = item.GetType();
 
@@ -109,7 +109,7 @@ namespace Obligatorisk_Game_Framework.Creature
         /// </summary>
         /// <param name="item">item is the item that is to be unequipped</param>
         /// <returns>Returns a EquipItemResponse to describe the operation.</returns>
-        public EquipItemResponse DeEquipItem(IWearable item)
+        public virtual EquipItemResponse DeEquipItem(IWearable item)
         {
             Type itemType = item.GetType();
             if (itemType.IsSubclassOf(typeof(IAttackItem)))
@@ -125,7 +125,7 @@ namespace Obligatorisk_Game_Framework.Creature
         }
 
         //Removes a item from a dictionary a replaces it with the default value
-        private EquipItemResponse RemoveItem<T>(Dictionary<string, T> dictionary, T item, T defaultValue) where T : IWearable
+        protected EquipItemResponse RemoveItem<T>(Dictionary<string, T> dictionary, T item, T defaultValue) where T : IWearable
         {
             if (dictionary.ContainsKey(item.Slot))
             {
@@ -150,7 +150,7 @@ namespace Obligatorisk_Game_Framework.Creature
         }
 
         //Replaces the item in the dictionary with the given item
-        private EquipItemResponse ChangeItems<T>(Dictionary<string, T> dictionary, T item) where T : IWearable
+        protected EquipItemResponse ChangeItems<T>(Dictionary<string, T> dictionary, T item) where T : IWearable
         {
             if (dictionary.ContainsKey(item.Slot))
             {
