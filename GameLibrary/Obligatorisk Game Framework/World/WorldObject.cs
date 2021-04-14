@@ -36,6 +36,11 @@ namespace Obligatorisk_Game_Framework.World
 
         #region Properties
         /// <summary>
+        /// The id of the object.
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
         /// Name of the object.
         /// </summary>
         public string Name { get; set; }
@@ -53,9 +58,15 @@ namespace Obligatorisk_Game_Framework.World
 
 
         #region Methods
-        public IResponse GetNeighbours(double range)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="range"></param>
+        /// <param name="inhabitedWorld"></param>
+        /// <returns></returns>
+        public WorldObjectResponse GetNeighbours(double range, World inhabitedWorld)
         {
-
+            var o
         }
         #endregion
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Obligatorisk_Game_Framework.Items;
 using Obligatorisk_Game_Framework.Responses;
+using Obligatorisk_Game_Framework.Responses.CombatResponses;
 using Obligatorisk_Game_Framework.World;
 
 namespace Obligatorisk_Game_Framework.Creature
@@ -35,8 +36,8 @@ namespace Obligatorisk_Game_Framework.Creature
 
 
         #region Methods
-        public abstract IResponse ReceiveHit(int hit);
-        public abstract IResponse Hit(int hit);
+        public abstract IResponse ReceiveHit(DamageResponse hit);
+        public abstract DamageResponse Hit();
         public abstract ItemsResponse Loot();
         #endregion
     }
