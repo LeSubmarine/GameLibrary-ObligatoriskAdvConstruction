@@ -130,23 +130,21 @@ namespace Obligatorisk_Game_Framework.Creature
             if (dictionary.ContainsKey(item.Slot))
             {
                 dictionary[item.Slot] = defaultValue;
-                return new EquipItemResponse
-                {
-                    Description = $"Item: {item.Name} has been removed from the {item.Slot} slot.",
-                    Equipped = defaultValue,
-                    UnEquipped = item,
-                    Slot = item.Slot,
-                    SuccessValue = true
-                };
+                return new EquipItemResponse(
+                    $"Item: {item.Name} has been removed from the {item.Slot} slot.",
+                    defaultValue,
+                    item,
+                    item.Slot,
+                    true
+                );
             }
-            return new EquipItemResponse
-            {
-                Description = $"Item: {item.Name} has failed to be removed from the slot {item.Slot} as a {typeof(T).Name}",
-                Equipped = null,
-                UnEquipped = item,
-                Slot = item.Slot,
-                SuccessValue = false
-            };
+            return new EquipItemResponse(
+                $"Item: {item.Name} has failed to be removed from the slot {item.Slot} as a {typeof(T).Name}",
+                null,
+                item,
+                item.Slot,
+                false
+                );
         }
 
         //Replaces the item in the dictionary with the given item
@@ -156,23 +154,21 @@ namespace Obligatorisk_Game_Framework.Creature
             {
                 T unEquipped = dictionary[item.Slot];
                 dictionary[item.Slot] = item;
-                return new EquipItemResponse
-                {
-                    Description = $"Item: {item.Name} has replaced item: {unEquipped.Name} in the {item.Slot} slot.",
-                    Equipped = item,
-                    UnEquipped = unEquipped,
-                    Slot = item.Slot,
-                    SuccessValue = true
-                };
+                return new EquipItemResponse(
+                    $"Item: {item.Name} has replaced item: {unEquipped.Name} in the {item.Slot} slot.",
+                    item,
+                    unEquipped,
+                    item.Slot,
+                    true
+                    );
             }
-            return new EquipItemResponse
-            {
-                Description = $"Item: {item.Name} has failed to be placed in the slot {item.Slot} as a {typeof(T).Name}",
-                Equipped = item,
-                UnEquipped = null,
-                Slot = item.Slot,
-                SuccessValue = false
-            };
+            return new EquipItemResponse(
+                $"Item: {item.Name} has failed to be placed in the slot {item.Slot} as a {typeof(T).Name}",
+                item,
+                null,
+                item.Slot,
+                false
+                );
         }
         #endregion
     }

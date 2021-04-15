@@ -28,25 +28,21 @@ namespace Obligatorisk_Game_Framework.Items.LootTables
             {
                 if (weights <= lootDouble && lootDouble <= (weights + keyValuePair.Value))
                 {
-                    return new ItemsResponse
-                    {
-                        Description = $"The item: {keyValuePair.Key.Name} has been looted.",
-                        Origin = "Loot table",
-                        SuccessValue = true,
-                        Value = new[] {keyValuePair.Key}
-                    };
+                    return new ItemsResponse(
+                        $"The item: {keyValuePair.Key.Name} has been looted.",
+                        "Loot table",
+                        new[] {keyValuePair.Key}
+                    );
                 }
 
                 weights += keyValuePair.Value;
             }
 
-            return new ItemsResponse
-            {
-                Description = "The loot table failed to loot",
-                Origin = "Loot table",
-                SuccessValue = false,
-                Value = null
-            };
+            return new ItemsResponse(
+                "The loot table failed to loot",
+                "Loot table",
+                null
+            );
         } 
         #endregion
     }

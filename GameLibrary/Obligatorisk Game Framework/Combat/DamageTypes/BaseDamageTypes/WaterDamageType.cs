@@ -13,12 +13,6 @@ namespace Obligatorisk_Game_Framework.Combat.DamageTypes.BaseDamageTypes
         #endregion
 
 
-        #region Properties
-        public double Weight { get; set; }
-        public new IDamageType.ModifierDelegate Modifier { get; set; } 
-        #endregion
-
-
         #region Method
         public override double StandardModifier(IDamageType damageType)
         {

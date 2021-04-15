@@ -13,14 +13,6 @@ namespace Obligatorisk_Game_Framework.World
     {
         #region Constructor
         /// <summary>
-        /// Empty constructor.
-        /// </summary>
-        public WorldObject()
-        {
-
-        }
-
-        /// <summary>
         /// Constructor for initializing all the property of the world object.
         /// </summary>
         /// <param name="name">Name of the WorldObject.</param>
@@ -116,6 +108,18 @@ namespace Obligatorisk_Game_Framework.World
                 null
             );
         }
+        #region OverridesForOperators
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        #endregion
         #endregion
     }
 }
