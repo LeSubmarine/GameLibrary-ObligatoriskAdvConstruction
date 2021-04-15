@@ -12,9 +12,7 @@ namespace Obligatorisk_Game_Framework.World
     /// </summary>
     public class World
     {
-        //TODO implement the max x and max y system to respect the manager
         #region Constructor
-
         /// <summary>
         /// Initializing the World object with an injection of an IWorldObjectManager.
         /// </summary>
