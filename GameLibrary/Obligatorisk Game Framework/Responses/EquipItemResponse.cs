@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Obligatorisk_Game_Framework.Items;
+using Obligatorisk_Game_Framework.Tracing;
 
 namespace Obligatorisk_Game_Framework.Responses
 {
     /// <summary>
     /// Represents an operation for equip and unequipping items.
+    /// Tracing Id 103.
     /// </summary>
     public class EquipItemResponse : IResponse
     {
         #region Constructor
-        /// <summary>
-        /// Empty constructor.
-        /// </summary>
-        public EquipItemResponse()
-        {
-        }
-
         /// <summary>
         /// Constructor for setting the equipped item, the unequipped item and the slot, where the items are shifting.
         /// </summary>
@@ -28,10 +24,14 @@ namespace Obligatorisk_Game_Framework.Responses
         /// <param name="successValue">SuccessValue describes whether the operation was a success or not.</param>
         public EquipItemResponse(string description, IWearable equipped, IWearable unEquipped, string slot, bool successValue)
         {
-            SuccessValue = true;
+            Description = description;
+            SuccessValue = successValue;
             Slot = slot;
             Equipped = equipped;
             UnEquipped = unEquipped;
+            
+            TraceSourceSingleton.Ts().TraceEvent(TraceEventType.Information, 103, Description,new object[]{Equipped, UnEquipped, Slot}); 
+            
         }
         #endregion
 

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Obligatorisk_Game_Framework.Items;
+using Obligatorisk_Game_Framework.Tracing;
 
 namespace Obligatorisk_Game_Framework.Responses
 {
@@ -10,6 +12,7 @@ namespace Obligatorisk_Game_Framework.Responses
         #region Constructor
         /// <summary>
         /// Constructor to define description, who is receiving, who is sending, what items.
+        /// Tracing Id 102.
         /// </summary>
         /// <param name="description">Describes the transaction of items.</param>
         /// <param name="origin">Origin represent who is sending items.</param>
@@ -28,7 +31,8 @@ namespace Obligatorisk_Game_Framework.Responses
             Description = description;
             Value = value;
             Origin = origin;
-
+            
+            TraceSourceSingleton.Ts().TraceEvent(TraceEventType.Information, 102, Description, Value);
 
         }
         #endregion

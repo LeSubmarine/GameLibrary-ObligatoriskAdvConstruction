@@ -7,6 +7,9 @@ using Obligatorisk_Game_Framework.World;
 
 namespace Obligatorisk_Game_Framework.Responses
 {
+    /// <summary>
+    /// Tracing Id 105.
+    /// </summary>
     public class WorldObjectResponse : IResponse
     {
         #region Constructor
@@ -15,14 +18,9 @@ namespace Obligatorisk_Game_Framework.Responses
             Description = description;
             SuccessValue = successValue;
             WorldObjects = worldObjects;
-            if (SuccessValue == false)
-            {
-                TraceSourceSingleton.Ts().TraceEvent(TraceEventType.Information,105,Description);
-            }
-            else
-            {
-                TraceSourceSingleton.Ts().TraceEvent(TraceEventType.Information,105,description,WorldObjects);
-            }
+            
+            TraceSourceSingleton.Ts().TraceEvent(TraceEventType.Information,105,Description,WorldObjects);
+            
         }
         #endregion
 

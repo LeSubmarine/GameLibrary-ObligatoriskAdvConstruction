@@ -11,6 +11,7 @@ namespace Obligatorisk_Game_Framework.Responses
     /// Represents a successful operation.
     /// Uses Description to define the error, ToString to create a formatted string for console etc,
     /// and SuccessValue to describe if the operation was a success or not.
+    /// Tracing Id 100.
     /// </summary>
     public class SuccessResponse : IResponse
     {
@@ -23,6 +24,7 @@ namespace Obligatorisk_Game_Framework.Responses
         {
             Description = description;
             SuccessValue = true;
+
             TraceSourceSingleton.Ts().TraceEvent(TraceEventType.Information,100,ToString());
         }
         #endregion
