@@ -14,7 +14,7 @@ namespace Obligatorisk_Game_Framework.Creature
     public abstract class Creature : WorldObject
     {
         #region Constructor
-        protected Creature(int hitpoints, IItemManager itemManager, string name, Position position, bool removable) : base(name, removable, position)
+        protected Creature(int hitpoints, IItemManager itemManager, string name, bool removable, Position position) : base(name, removable, position)
         {
             Hitpoints = hitpoints;
             ItemManager = itemManager;
