@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
+using Obligatorisk_Game_Framework.Tracing;
 using Obligatorisk_Game_Framework.World;
 
 namespace Obligatorisk_Game_Framework.Responses
@@ -21,6 +23,7 @@ namespace Obligatorisk_Game_Framework.Responses
         {
             Description = description;
             SuccessValue = true;
+            TraceSourceSingleton.Ts().TraceEvent(TraceEventType.Information,100,ToString());
         }
         #endregion
 
