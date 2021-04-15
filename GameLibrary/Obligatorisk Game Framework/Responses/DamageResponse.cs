@@ -22,12 +22,14 @@ namespace Obligatorisk_Game_Framework.Responses.CombatResponses
         /// <param name="successValue">Whether the operation was successful or not.</param>
         /// <param name="damage">How much damage was dealt.</param>
         /// <param name="origin">Origin of the damage</param>
-        public DamageResponse(string description, bool successValue, double damage, WorldObject origin)
+        public DamageResponse(string description, bool successValue, double damage, WorldObject origin, IAttackItem weapon, IEnumerable<IDamageType> damageTypes)
         {
             Description = description;
             SuccessValue = successValue;
             Damage = damage;
             Origin = origin;
+            Weapon = weapon;
+            DamageTypes = damageTypes;
 
             TraceSourceSingleton.Ts().TraceEvent(TraceEventType.Information,104,Description,new object[]{Origin,Damage});
         }
@@ -51,7 +53,7 @@ namespace Obligatorisk_Game_Framework.Responses.CombatResponses
         /// <summary>
         /// Weapon used for the damage, if any.
         /// </summary>
-        public IItem Weapon { get; set; }
+        public IAttackItem Weapon { get; set; }
 
         /// <summary>
         /// Types of damage being dealt.
