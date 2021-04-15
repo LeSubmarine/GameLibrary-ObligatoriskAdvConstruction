@@ -8,6 +8,11 @@ namespace Obligatorisk_Game_Framework.Combat.DamageTypes.BaseDamageTypes
     public class FireDamageType : DamageTypeTemplate, IDamageType
     {
         #region Constructor
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="weight"></param>
+        /// <param name="modifierMethod"></param>
         public FireDamageType(double weight = 1, IDamageType.ModifierDelegate modifierMethod = null) : base(weight, modifierMethod)
         {
         } 

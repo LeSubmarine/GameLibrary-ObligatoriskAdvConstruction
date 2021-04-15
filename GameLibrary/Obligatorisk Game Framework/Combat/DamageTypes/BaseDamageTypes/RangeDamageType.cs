@@ -7,7 +7,7 @@ namespace Obligatorisk_Game_Framework.Combat.DamageTypes.BaseDamageTypes
     class RangeDamageType : DamageTypeTemplate,IDamageType
     {
         #region Constructor
-        public RangeDamageType(double weight, IDamageType.ModifierDelegate modifier = null) : base(weight, modifier)
+        public RangeDamageType(double weight = 1, IDamageType.ModifierDelegate modifier = null) : base(weight, modifier)
         { }
         #endregion
 

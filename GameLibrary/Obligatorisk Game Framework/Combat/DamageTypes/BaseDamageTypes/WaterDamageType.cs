@@ -8,7 +8,7 @@ namespace Obligatorisk_Game_Framework.Combat.DamageTypes.BaseDamageTypes
     class WaterDamageType : DamageTypeTemplate, IDamageType
     {
         #region Constructor
-        public WaterDamageType(double weight, IDamageType.ModifierDelegate modifier = null) : base(weight,modifier)
+        public WaterDamageType(double weight = 1, IDamageType.ModifierDelegate modifier = null) : base(weight,modifier)
         { }
         #endregion
 
