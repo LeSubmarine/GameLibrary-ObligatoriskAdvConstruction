@@ -5,37 +5,36 @@ using Obligatorisk_Game_Framework.UtilityTools;
 
 namespace Obligatorisk_Game_Framework.Combat.DamageTypes.BaseDamageTypes
 {
-    public class FireDamageType : DamageTypeTemplate, IDamageType
+    class WaterDamageType : DamageTypeTemplate, IDamageType
     {
         #region Constructor
-        public FireDamageType(double weight = 1, IDamageType.ModifierDelegate modifierMethod = null) : base(weight, modifierMethod)
-        {
-        } 
+        public WaterDamageType(double weight, IDamageType.ModifierDelegate modifier = null) : base(weight,modifier)
+        { }
         #endregion
 
 
         #region Properties
         public double Weight { get; set; }
-        public new IDamageType.ModifierDelegate Modifier { get; set; }
+        public new IDamageType.ModifierDelegate Modifier { get; set; } 
         #endregion
 
 
-        #region Methods
+        #region Method
         public override double StandardModifier(IDamageType damageType)
         {
-            if (TypeComparer.IsSameOrVariant(damageType.GetType(),typeof(FireDamageType)).SuccessValue)
+            if (TypeComparer.IsSameOrVariant(damageType.GetType(), typeof(WaterDamageType)).SuccessValue)
             {
                 return 0.5;
             }
 
-            if (TypeComparer.IsSameOrVariant(damageType.GetType(), typeof(WaterDamageType)).SuccessValue)
+            if (TypeComparer.IsSameOrVariant(damageType.GetType(), typeof(FireDamageType)).SuccessValue)
             {
                 return 0.1;
             }
 
 
             return 1;
-        }
+        } 
         #endregion
     }
 }
