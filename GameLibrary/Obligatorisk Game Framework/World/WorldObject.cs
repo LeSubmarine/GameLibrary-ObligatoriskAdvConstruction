@@ -104,18 +104,17 @@ namespace Obligatorisk_Game_Framework.World
             if (neighbors.Any())
             {
                 return new WorldObjectResponse
-                {
-                    Description = $"These are the neighbors of the WorldObject: {Name}, Id: {Id}.",
-                    SuccessValue = true,
-                    WorldObjects = neighbors
-                }; 
+                (
+                   $"These are the neighbors of the WorldObject: {Name}, Id: {Id}.",
+                   true,
+                   neighbors
+                ); 
             }
-            return new WorldObjectResponse
-            {
-                Description = $"The WorldObject: {Name}, Id: {Id}, did not have any neighbors within the range of {range}, with the coordinates X:{Position.X},Y:{Position.Y}.",
-                SuccessValue = false,
-                WorldObjects = null
-            };
+            return new WorldObjectResponse(
+                $"The WorldObject: {Name}, Id: {Id}, did not have any neighbors within the range of {range}, with the coordinates X:{Position.X},Y:{Position.Y}.",
+                false,
+                null
+            );
         }
         #endregion
     }
