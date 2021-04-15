@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Obligatorisk_Game_Framework.Items;
-
-namespace Obligatorisk_Game_Framework.Creature
+﻿namespace Obligatorisk_Game_Framework.Creature.ItemManagement
 {
     /// <summary>
     /// Defines what gear slots a creatures has.

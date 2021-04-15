@@ -9,6 +9,9 @@ namespace Obligatorisk_Game_Framework.World
     /// </summary>
     public class Position
     {
+        #region Constructor
+
+        #endregion
         #region Properties
         /// <summary>
         /// Defines the absolute X value of a position.

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Game.Item_Models.Animal_Items;
+using Game.Items.Item_Models.Animal_Items;
 using Obligatorisk_Game_Framework.Items;
 using Obligatorisk_Game_Framework.Items.LootTables;
 

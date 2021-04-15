@@ -5,7 +5,7 @@ using System.Text;
 namespace Obligatorisk_Game_Framework.Combat.DamageTypes.BaseDamageTypes
 {
     /// <summary>
-    /// Implements the basic components of an IDamageType
+    /// Implements the basic components of an IDamageType.
     /// </summary>
     public abstract class DamageTypeTemplate : IDamageType
     {

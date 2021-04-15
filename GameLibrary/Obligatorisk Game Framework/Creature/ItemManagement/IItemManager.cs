@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Obligatorisk_Game_Framework.Items;
+﻿using Obligatorisk_Game_Framework.Items;
 using Obligatorisk_Game_Framework.Responses;
 
-namespace Obligatorisk_Game_Framework.Creature
+namespace Obligatorisk_Game_Framework.Creature.ItemManagement
 {
     /// <summary>
     /// Interface for controlling the items for a creature.

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.VisualBasic;
 using Obligatorisk_Game_Framework.Items;
 using Obligatorisk_Game_Framework.Responses;
 
-namespace Obligatorisk_Game_Framework.Creature
+namespace Obligatorisk_Game_Framework.Creature.ItemManagement
 {
     /// <summary>
     /// Class for representing what items the owner is wearing
@@ -124,7 +121,14 @@ namespace Obligatorisk_Game_Framework.Creature
             return RemoveItem<IWearable>(MiscItems,item,_defaultMiscItem);
         }
 
-        //Removes a item from a dictionary a replaces it with the default value
+        /// <summary>
+        /// Removes a item from a dictionary a replaces it with the default value.
+        /// </summary>
+        /// <typeparam name="T">This a Type which implements IWearable and has a corresponding dictionary for wearing.</typeparam>
+        /// <param name="dictionary">This the dictionary where the item is to be removed from.</param>
+        /// <param name="item">This the item that will be removed from the dictionary.</param>
+        /// <param name="defaultValue">This is the value that will replace the item in the dictionary.</param>
+        /// <returns>Returns an IResponse explaining the operation.</returns>
         protected EquipItemResponse RemoveItem<T>(Dictionary<string, T> dictionary, T item, T defaultValue) where T : IWearable
         {
             if (dictionary.ContainsKey(item.Slot))
@@ -147,7 +151,13 @@ namespace Obligatorisk_Game_Framework.Creature
                 );
         }
 
-        //Replaces the item in the dictionary with the given item
+        /// <summary>
+        /// Puts an item in the dictionary and removes the old item.
+        /// </summary>
+        /// <typeparam name="T">This a Type which implements IWearable and has a corresponding dictionary for wearing.</typeparam>
+        /// <param name="dictionary">This the dictionary where the item is to be put.</param>
+        /// <param name="item">This the item that will be put in the dictionary.</param>
+        /// <returns>Returns an IResponse explaining the operation and the removed item.</returns>
         protected EquipItemResponse ChangeItems<T>(Dictionary<string, T> dictionary, T item) where T : IWearable
         {
             if (dictionary.ContainsKey(item.Slot))

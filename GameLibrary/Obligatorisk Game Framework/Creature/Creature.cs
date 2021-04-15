@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Obligatorisk_Game_Framework.Creature.ItemManagement;
 using Obligatorisk_Game_Framework.Items;
 using Obligatorisk_Game_Framework.Responses;
 using Obligatorisk_Game_Framework.Responses.CombatResponses;
@@ -9,7 +10,7 @@ using Obligatorisk_Game_Framework.World;
 namespace Obligatorisk_Game_Framework.Creature
 {
     /// <summary>
-    /// Defines the basic behavior of a creature
+    /// Defines the basic behavior of a creature.
     /// </summary>
     public abstract class Creature : WorldObject
     {

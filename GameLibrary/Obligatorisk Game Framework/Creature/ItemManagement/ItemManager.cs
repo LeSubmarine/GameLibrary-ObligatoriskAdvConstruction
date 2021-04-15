@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Obligatorisk_Game_Framework.Creature
+﻿namespace Obligatorisk_Game_Framework.Creature.ItemManagement
 {
-    class ItemManager : IItemManager
+    /// <summary>
+    /// Class for managing the inventory and equipping items. 
+    /// </summary>
+    public class ItemManager : IItemManager
     {
         #region Constructor
+        /// <summary>
+        /// Initializes the ItemManager with injected IInventory and GearLoadOut.
+        /// </summary>
+        /// <param name="inventory">The inventory that will keep track of items in general.</param>
+        /// <param name="gearLoadOut">The </param>
         public ItemManager(IInventory inventory, GearLoadOut gearLoadOut)
         {
             Inventory = inventory;
