@@ -12,7 +12,7 @@ namespace Obligatorisk_Game_Framework.Responses
         public bool SuccessValue { get; set; }
 
         /// <summary>
-        /// Contains some object of type WorldObject.
+        /// Contains some objects of type WorldObject.
         /// </summary>
         public IEnumerable<WorldObject> WorldObjects { get; set; }
         #endregion
