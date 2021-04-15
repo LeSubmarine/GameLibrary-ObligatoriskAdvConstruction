@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using Obligatorisk_Game_Framework.Combat.DamageTypes;
+using Obligatorisk_Game_Framework.Items;
 using Obligatorisk_Game_Framework.Tracing;
 using Obligatorisk_Game_Framework.World;
 
@@ -13,6 +15,13 @@ namespace Obligatorisk_Game_Framework.Responses.CombatResponses
     public class DamageResponse : IResponse
     {
         #region Constructor
+        /// <summary>
+        /// Creates a DamageResponse object.
+        /// </summary>
+        /// <param name="description">Description of the operation.</param>
+        /// <param name="successValue">Whether the operation was successful or not.</param>
+        /// <param name="damage">How much damage was dealt.</param>
+        /// <param name="origin">Origin of the damage</param>
         public DamageResponse(string description, bool successValue, double damage, WorldObject origin)
         {
             Description = description;
@@ -38,6 +47,16 @@ namespace Obligatorisk_Game_Framework.Responses.CombatResponses
         /// The origin of the damage.
         /// </summary>
         public WorldObject Origin { get; set; }
+
+        /// <summary>
+        /// Weapon used for the damage, if any.
+        /// </summary>
+        public IItem Weapon { get; set; }
+
+        /// <summary>
+        /// Types of damage being dealt.
+        /// </summary>
+        public IEnumerable<IDamageType> DamageTypes { get; set; }
         #endregion
     }
 }
