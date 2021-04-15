@@ -9,13 +9,6 @@ namespace Obligatorisk_Game_Framework.Responses
     {
         #region Constructor
         /// <summary>
-        /// Empty constructor.
-        /// </summary>
-        public ItemsResponse()
-        {
-        }
-
-        /// <summary>
         /// Constructor to define description, who is receiving, who is sending, what items.
         /// </summary>
         /// <param name="description">Describes the transaction of items.</param>
@@ -35,6 +28,8 @@ namespace Obligatorisk_Game_Framework.Responses
             Description = description;
             Value = value;
             Origin = origin;
+
+
         }
         #endregion
 
