@@ -20,8 +20,7 @@ namespace Obligatorisk_Game_Framework.World
         /// </summary>
         /// <param name="worldObjectsManager">An object implementing the IWorldObjectManager interface.</param>
         /// <param name="configFilePath">The path for a xml config file, that implements the integers MaxX and MaxY.</param>
-        /// <param name="traceSource">The TraceSource the program is going to use if it is going to be used. Remember to add listeners.</param>
-        public World(IWorldObjectManager worldObjectsManager, string configFilePath = null, TraceSource traceSource = null)
+        public World(IWorldObjectManager worldObjectsManager, string configFilePath = null)
         {
             WorldObjectsManager = worldObjectsManager;
 
@@ -72,12 +71,6 @@ namespace Obligatorisk_Game_Framework.World
             if (MaxY == 0)
             {
                 MaxY = 1000;
-            }
-
-            //TODO
-            if (traceSource == null)
-            {
-
             }
         }
         #endregion
