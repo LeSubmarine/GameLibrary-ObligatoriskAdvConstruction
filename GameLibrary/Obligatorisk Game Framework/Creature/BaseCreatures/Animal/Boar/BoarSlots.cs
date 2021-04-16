@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 using Obligatorisk_Game_Framework.Creature.ItemManagement;
 
-namespace Obligatorisk_Game_Framework.Creature.BaseCreatures.Humanoid
+namespace Obligatorisk_Game_Framework.Creature.BaseCreatures.Animal.Boar
 {
-    public class HumanoidSlots : GearSlots
+    public class BoarSlots : GearSlots
     {
-        public HumanoidSlots()
+        public BoarSlots()
         {
             AttackSlots = new[] {"feet","teeth"};
             DefenseSlots = new[] {"skin"};
-            MiscSlots = new[] {};
+            MiscSlots = new string[]{};
         }
     }
 }

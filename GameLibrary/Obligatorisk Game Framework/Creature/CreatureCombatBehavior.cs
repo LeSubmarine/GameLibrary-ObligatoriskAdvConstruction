@@ -130,13 +130,7 @@ namespace Obligatorisk_Game_Framework.Creature
 
         public virtual double LevelStrengthModifier(int number)
         {
-            double newNumber = 1;
-            for (int i = 0; i < number; i++)
-            {
-                newNumber = (newNumber + 0.5) * 1.03;
-            }
-
-            return newNumber;
+            return Creature.StandardLevelModifier(number);
         }
         #endregion
     }

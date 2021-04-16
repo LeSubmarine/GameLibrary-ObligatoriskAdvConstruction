@@ -62,6 +62,17 @@ namespace Obligatorisk_Game_Framework.Creature
 
 
         #region Methods
+
+        public static double StandardLevelModifier(int level)
+        {
+            double newNumber = 1;
+            for (int i = 0; i < level; i++)
+            {
+                newNumber = (newNumber + 0.5) * 1.03;
+            }
+
+            return newNumber;
+        }
         public abstract IResponse ReceiveHit(DamageResponse hit);
         public abstract DamageResponse Hit();
         public abstract ItemsResponse Loot();

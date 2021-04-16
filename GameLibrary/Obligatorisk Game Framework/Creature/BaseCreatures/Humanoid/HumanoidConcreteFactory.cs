@@ -35,7 +35,7 @@ namespace Obligatorisk_Game_Framework.Creature.BaseCreatures.Humanoid
         {
             HumanoidCreature creature = new HumanoidCreature(
                 _level,
-                100 + 10 * (_level - 1),
+                100 + Convert.ToInt32(10 * Creature.StandardLevelModifier(_level)),
                 new ItemManager(
                     new Inventory(), 
                     new HumanoidLoadOut(
@@ -56,7 +56,7 @@ namespace Obligatorisk_Game_Framework.Creature.BaseCreatures.Humanoid
 
         protected virtual string GetName()
         {
-            return "";
+            return "Eigil";
         }
 
         protected virtual Position GetPosition()

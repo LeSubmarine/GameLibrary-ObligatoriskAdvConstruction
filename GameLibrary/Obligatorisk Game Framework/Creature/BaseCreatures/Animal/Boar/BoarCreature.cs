@@ -1,21 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Obligatorisk_Game_Framework.Combat;
 using Obligatorisk_Game_Framework.Creature.ItemManagement;
-using Obligatorisk_Game_Framework.Items;
 using Obligatorisk_Game_Framework.Items.LootTables;
-using Obligatorisk_Game_Framework.Responses;
-using Obligatorisk_Game_Framework.Responses.CombatResponses;
 using Obligatorisk_Game_Framework.World;
 
-namespace Obligatorisk_Game_Framework.Creature.BaseCreatures.Humanoid
+namespace Obligatorisk_Game_Framework.Creature.BaseCreatures.Animal.Boar
 {
-    public class HumanoidCreature : CreatureCombatBehavior
+    public class BoarCreature : CreatureCombatBehavior
     {
-        public HumanoidCreature(int level, int hitpoints, IItemManager itemManager, string name, bool removable,
+        public BoarCreature(int level, int hitpoints, IItemManager itemManager, string name, bool removable,
             Position position, ILootTable lootTable) : base(hitpoints, itemManager, name, removable, position, lootTable, level)
         { }
+
+        #region Methods
+
+        protected override IDamageDealing PickDamageDealing()
+        {
+            Random random = new Random(DateTime.Now.Millisecond);
+            int noOfAttackSlots = ItemManager.GearLoadOut.AttackItems.Values.Count(a => !(a is null));
+            return ItemManager.GearLoadOut.AttackItems.Values.Where(a => !(a is null)).ToArray()[
+                random.Next(noOfAttackSlots)];
+        }
+
+        #endregion
     }
 }

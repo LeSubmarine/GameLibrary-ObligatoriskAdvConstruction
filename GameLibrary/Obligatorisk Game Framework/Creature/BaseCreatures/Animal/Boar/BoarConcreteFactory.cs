@@ -1,11 +1,14 @@
-﻿using Obligatorisk_Game_Framework.Combat.DamageTypes;
+﻿using System.Linq;
+using Obligatorisk_Game_Framework.Combat.DamageTypes;
 using Obligatorisk_Game_Framework.Combat.DamageTypes.BaseDamageTypes;
 using Obligatorisk_Game_Framework.Creature.BaseCreatures.Humanoid;
 using Obligatorisk_Game_Framework.Creature.CreatureFactory;
 using Obligatorisk_Game_Framework.Creature.ItemManagement;
+using Obligatorisk_Game_Framework.Items;
 using Obligatorisk_Game_Framework.Items.BaseItems.AnimalItems;
-using Obligatorisk_Game_Framework.Items.BaseItems.BoarItems;
 using Obligatorisk_Game_Framework.Items.LootTables;
+using Obligatorisk_Game_Framework.Responses;
+using Obligatorisk_Game_Framework.UtilityTools;
 using Obligatorisk_Game_Framework.World;
 
 namespace Obligatorisk_Game_Framework.Creature.BaseCreatures.Animal.Boar
@@ -34,23 +37,30 @@ namespace Obligatorisk_Game_Framework.Creature.BaseCreatures.Animal.Boar
         {
             BoarCreature creature = new BoarCreature(
                 _level,
-                100 + 10 * (_level - 1),
+                20 * (_level),
                 new ItemManager(
                     new Inventory(),
                     new GearLoadOut(
                         new BoarSlots(),
                         new Hide(null))),
-                "boar",
+                _name ?? "boar",
                 true,
-                new Position(1, 1, 1, 2),
+                _position ?? new Position(1, 1, 1, 2),
                 new BoarLootTableDecorator(new LootTable()));
+            creature.ItemManager.AddItems(new ItemsResponse("Adding start items.", $"{GetType().Name}", new IItem[]
+            {
+                new Hide(null), new Hoofs(null), new TuskWeapon(null)   
+            }));
+            creature.ItemManager.GetItems().Value.Where(a => TypeComparer.IsSameOrVariant(typeof(IWearable),a.GetType()).SuccessValue)
+                .ToList().ForEach(a => { creature.ItemManager.EquipGear((IWearable) a); });
+
             return creature;
         }
 
 
-        private string GetName()
+        protected virtual string GetName()
         {
-            return "";
+            return "boar";
         }
 
         protected virtual Position GetPosition()
