@@ -11,7 +11,6 @@ namespace Game
         static void Main(string[] args)
         {
             
-            Creature boar = new BoarCreature(10,"Boar",true,new Position( 1, 1, 1,1));
             Console.WriteLine("Hello World!");
         }
     }

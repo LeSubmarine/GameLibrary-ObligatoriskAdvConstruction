@@ -9,9 +9,9 @@ namespace Obligatorisk_Game_Framework.Creature.BaseCreatures.Humanoid
     {
         public HumanoidSlots()
         {
-            AttackSlots = new[] {""};
-            DefenseSlots = new[] {""};
-            MiscSlots = new[] {""};
+            AttackSlots = new[] {"fist"};
+            DefenseSlots = new[] {"head", "shoulder","feet","breast","legs","offhand"};
+            MiscSlots = new[] {"back"};
         }
     }
 }

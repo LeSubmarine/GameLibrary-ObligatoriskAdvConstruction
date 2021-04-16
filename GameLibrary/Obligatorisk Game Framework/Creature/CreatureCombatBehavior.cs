@@ -35,10 +35,17 @@ namespace Obligatorisk_Game_Framework.Creature
             {
                 allPossibleDamage.Add(DefensiveGear.Defend(hit));
             }
-            double averageDamage = (from damages in allPossibleDamage select damages.Damage).Average()
+
+            double averageDamage = (from damages in allPossibleDamage select damages.Damage).Average();
             int averageDamageRoundedUp = Convert.ToInt32(Math.Ceiling(averageDamage));
 
-            return null;
+            if (averageDamageRoundedUp > 0)
+            {
+                Hitpoints = Hitpoints - averageDamageRoundedUp;
+                return new SuccessResponse($"{Name} of type {GetType().Name} took {averageDamageRoundedUp} points of damage from {hit.Origin.Name}.");
+            }
+            
+            return new SuccessResponse($"{Name} blocked the damage from {hit.Origin.Name}'s attack.");
         }
         
         public override DamageResponse Hit()
@@ -64,23 +71,6 @@ namespace Obligatorisk_Game_Framework.Creature
                 damage > 0 ? damage : 0,
                 this,
                 weapon);
-        }
-
-        protected virtual IDamageDealing PickDamageDealing()
-        {
-            IDamageDealing weapon = (from weapons in ItemManager.GearLoadOut.AttackItems.Values select weapons).First();
-            return weapon;
-        }
-
-        public virtual double LevelStrengthModifier(int number)
-        {
-            double newNumber = 1;
-            for (int i = 0; i < number; i++)
-            {
-                newNumber = (newNumber + 0.5) * 1.03;
-            }
-
-            return newNumber;
         }
 
         public override ItemsResponse Loot()
@@ -114,6 +104,23 @@ namespace Obligatorisk_Game_Framework.Creature
                 $"A {nameof(Creature)} of class {this.GetType().Name} is getting looted.",
                 $"A {nameof(Creature)} of class {this.GetType().Name} 's Loot method.",
                 itemsRolled);
+        }
+
+        protected virtual IDamageDealing PickDamageDealing()
+        {
+            IDamageDealing weapon = (from weapons in ItemManager.GearLoadOut.AttackItems.Values select weapons).First();
+            return weapon;
+        }
+
+        public virtual double LevelStrengthModifier(int number)
+        {
+            double newNumber = 1;
+            for (int i = 0; i < number; i++)
+            {
+                newNumber = (newNumber + 0.5) * 1.03;
+            }
+
+            return newNumber;
         }
         #endregion
     }

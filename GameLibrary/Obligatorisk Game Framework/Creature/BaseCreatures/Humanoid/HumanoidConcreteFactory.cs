@@ -44,10 +44,7 @@ namespace Obligatorisk_Game_Framework.Creature.BaseCreatures.Humanoid
                             "",
                             new IDamageType[]{new PhysicalDamageType()},
                             0),
-                        new HumanoidFists(
-                            "Fist",
-                            new IDamageType[]{new PhysicalDamageType()},
-                            5))),
+                        new HumanoidFists())),
                 _name ?? GetName(),
                 true,
                 _position ?? GetPosition(),
