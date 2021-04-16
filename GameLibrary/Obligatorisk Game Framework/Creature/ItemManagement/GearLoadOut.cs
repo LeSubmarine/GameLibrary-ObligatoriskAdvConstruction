@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Obligatorisk_Game_Framework.Items;
 using Obligatorisk_Game_Framework.Responses;
+using Obligatorisk_Game_Framework.UtilityTools;
 
 namespace Obligatorisk_Game_Framework.Creature.ItemManagement
 {
@@ -89,12 +90,12 @@ namespace Obligatorisk_Game_Framework.Creature.ItemManagement
         {
             Type itemType = item.GetType();
 
-            if (itemType.GetInterfaces().Contains(typeof(IAttackItem)))
+            if (TypeComparer.IsSameOrVariant(typeof(IAttackItem), itemType).SuccessValue)
             {
                 return ChangeItems<IAttackItem>(AttackItems, (IAttackItem)item);
             }
 
-            if (itemType.GetInterfaces().Contains(typeof(IDefenseItem)))
+            if (TypeComparer.IsSameOrVariant(typeof(IDefenseItem), itemType).SuccessValue)
             {
                 return ChangeItems<IDefenseItem>(DefenseItems, (IDefenseItem)item);
             }
@@ -110,12 +111,12 @@ namespace Obligatorisk_Game_Framework.Creature.ItemManagement
         public virtual EquipItemResponse DeEquipItem(IWearable item)
         {
             Type itemType = item.GetType();
-            if (itemType.IsSubclassOf(typeof(IAttackItem)))
+            if (TypeComparer.IsSameOrVariant(typeof(IAttackItem), itemType).SuccessValue)
             {
                 return RemoveItem<IAttackItem>(AttackItems, (IAttackItem)item,_defaultAttackItem);
             } 
 
-            if (itemType.IsSubclassOf(typeof(IDefenseItem)))
+            if (TypeComparer.IsSameOrVariant(typeof(IDefenseItem), itemType).SuccessValue)
             {
                 return RemoveItem<IDefenseItem>(DefenseItems, (IDefenseItem)item,_defaultDefenseItem);
             }

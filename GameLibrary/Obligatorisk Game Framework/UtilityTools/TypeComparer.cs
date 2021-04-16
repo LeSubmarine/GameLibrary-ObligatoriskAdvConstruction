@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Obligatorisk_Game_Framework.Responses;
 
 namespace Obligatorisk_Game_Framework.UtilityTools
@@ -13,6 +14,11 @@ namespace Obligatorisk_Game_Framework.UtilityTools
             if (otherClass.IsSubclassOf(baseClass))
             {
                 return new SuccessResponse($"{otherClass.Name} inherits from {baseClass.Name}.");
+            }
+
+            if (otherClass.GetInterfaces().Contains(baseClass))
+            {
+                return new SuccessResponse($"{otherClass.Name} implements from {baseClass.Name}.");
             }
 
             if (otherClass == baseClass)

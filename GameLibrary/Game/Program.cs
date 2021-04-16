@@ -6,10 +6,12 @@ using System.Threading;
 using Game.Creatures;
 using Game.Creatures.Boar;
 using Microsoft.Win32.SafeHandles;
+using Obligatorisk_Game_Framework.Combat.DamageTypes;
 using Obligatorisk_Game_Framework.Combat.DamageTypes.BaseDamageTypes;
 using Obligatorisk_Game_Framework.Creature;
 using Obligatorisk_Game_Framework.Creature.BaseCreatures.Humanoid;
 using Obligatorisk_Game_Framework.Items;
+using Obligatorisk_Game_Framework.Items.BaseItems.Armor;
 using Obligatorisk_Game_Framework.Items.BaseItems.Weapons;
 using Obligatorisk_Game_Framework.Responses;
 using Obligatorisk_Game_Framework.Tracing;
@@ -50,7 +52,23 @@ namespace Game
                     Console.ReadLine();
                 }
                 Thread.Sleep(3000);
+                ItemsResponse itemsLoot = ((Creature) obj).Loot();
+                string collectedLoot = "";
+                itemsLoot.Value.ToList().ForEach(a => collectedLoot += a.Name + " ");
+                Console.WriteLine("WAUW you've looted : " + collectedLoot);
                 Console.ReadLine();
+                Console.WriteLine("now new dude with armor, and bigg sword vs small dude");
+
+                Creature bigGuyCreature = (new HumanoidConcreteFactory(5,"BIGG GUY")).MakeCreature();
+                Creature smoll = (new HumanoidConcreteFactory(1)).MakeCreature();
+
+                bigGuyCreature.ItemManager.Inventory.AddItem(new BreastPlate(10, new[] {new PhysicalDamageType(),}));
+                bigGuyCreature.ItemManager.Inventory.AddItem(new Helmet(5, new[] {new PhysicalDamageType(),}));
+                bigGuyCreature.ItemManager.Inventory.AddItem(new Sword(new IDamageType[] {new PhysicalDamageType(),new FireDamageType(2) },10));
+                bigGuyCreature.ItemManager.Inventory.GetItems().Value.Where(a).ToList().ForEach(a =>
+                    {
+                        bigGuyCreature.ItemManager.GearLoadOut.EquipItem(a);
+                    });
             }
         }
     }
