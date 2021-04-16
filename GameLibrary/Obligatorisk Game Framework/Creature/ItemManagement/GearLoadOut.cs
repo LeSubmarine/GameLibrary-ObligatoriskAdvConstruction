@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Obligatorisk_Game_Framework.Items;
 using Obligatorisk_Game_Framework.Responses;
 
@@ -88,12 +89,12 @@ namespace Obligatorisk_Game_Framework.Creature.ItemManagement
         {
             Type itemType = item.GetType();
 
-            if (itemType.IsSubclassOf(typeof(IAttackItem)))
+            if (itemType.GetInterfaces().Contains(typeof(IAttackItem)))
             {
                 return ChangeItems<IAttackItem>(AttackItems, (IAttackItem)item);
             }
 
-            if (itemType.IsSubclassOf(typeof(IDefenseItem)))
+            if (itemType.GetInterfaces().Contains(typeof(IDefenseItem)))
             {
                 return ChangeItems<IDefenseItem>(DefenseItems, (IDefenseItem)item);
             }

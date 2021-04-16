@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using Obligatorisk_Game_Framework.Responses;
 
 namespace Obligatorisk_Game_Framework.World
 {
@@ -23,7 +24,7 @@ namespace Obligatorisk_Game_Framework.World
             WorldObjectsManager = worldObjectsManager;
 
 
-            if (string.IsNullOrEmpty(configFilePath))
+            if (!string.IsNullOrEmpty(configFilePath))
             {
                 using (XmlReader reader = XmlReader.Create(configFilePath))
                 {
@@ -93,7 +94,12 @@ namespace Obligatorisk_Game_Framework.World
 
 
         #region Methods
-        public void Act()
+
+        public virtual IResponse AddWorldObjectToWorld(WorldObject obj)
+        {
+            return WorldObjectsManager.AddWorldObject(obj);
+        }
+        public virtual void Act()
         { }
         #endregion
     }

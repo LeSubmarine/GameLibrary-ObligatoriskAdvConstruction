@@ -30,19 +30,26 @@ namespace Obligatorisk_Game_Framework.Creature
         #region Methods
         public override IResponse ReceiveHit(DamageResponse hit)
         {
-            List<DamageResponse> allPossibleDamage = new List<DamageResponse>();
-            foreach (var DefensiveGear in ItemManager.GearLoadOut.DefenseItems.Values)
+            IDefenseItem defenseItem = PickDefenseItem();
+            DamageResponse defended = defenseItem.Defend(hit);
+            int damageRoundedUp;
+            if (defended.SuccessValue)
             {
-                allPossibleDamage.Add(DefensiveGear.Defend(hit));
+                damageRoundedUp = Convert.ToInt32(Math.Ceiling(defended.Damage));
+            }
+            else
+            {
+                return new FailureResponse("A defense Item failed");
             }
 
-            double averageDamage = (from damages in allPossibleDamage select damages.Damage).Average();
-            int averageDamageRoundedUp = Convert.ToInt32(Math.Ceiling(averageDamage));
-
-            if (averageDamageRoundedUp > 0)
+            if (damageRoundedUp > 0)
             {
-                Hitpoints = Hitpoints - averageDamageRoundedUp;
-                return new SuccessResponse($"{Name} of type {GetType().Name} took {averageDamageRoundedUp} points of damage from {hit.Origin.Name}.");
+                Hitpoints = Hitpoints - damageRoundedUp;
+                if (Hitpoints == 0)
+                {
+                    return Death();
+                }
+                return new SuccessResponse($"{Name} of type {GetType().Name} took {damageRoundedUp} points of damage from {hit.Origin.Name}.");
             }
             
             return new SuccessResponse($"{Name} blocked the damage from {hit.Origin.Name}'s attack.");
@@ -104,6 +111,11 @@ namespace Obligatorisk_Game_Framework.Creature
                 $"A {nameof(Creature)} of class {this.GetType().Name} is getting looted.",
                 $"A {nameof(Creature)} of class {this.GetType().Name} 's Loot method.",
                 itemsRolled);
+        }
+
+        protected virtual IDefenseItem PickDefenseItem()
+        {
+            return new CompositeDefenseItem(ItemManager.GearLoadOut.DefenseItems.Values);
         }
 
         protected virtual IDamageDealing PickDamageDealing()

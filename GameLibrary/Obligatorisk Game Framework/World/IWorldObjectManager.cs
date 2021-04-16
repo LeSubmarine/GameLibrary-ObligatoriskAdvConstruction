@@ -14,8 +14,8 @@ namespace Obligatorisk_Game_Framework.World
         /// <summary>
         /// Gets all the WorldObjects in the world.
         /// </summary>
-        /// <returns>Returns a Enumerable of WorldObjects.</returns>
-        public IEnumerable<WorldObject> GetWorldObjects();
+        /// <returns>Returns a IResponse with an Enumerable of WorldObjects.</returns>
+        public WorldObjectResponse GetWorldObjects();
 
         /// <summary>
         /// Adds a WorldObject to the world.

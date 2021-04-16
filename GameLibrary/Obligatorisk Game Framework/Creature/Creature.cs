@@ -40,7 +40,6 @@ namespace Obligatorisk_Game_Framework.Creature
             set {
                 if (value < 0)
                 {
-
                     _hitpoints = 0;
                     return;
                 }
@@ -65,6 +64,10 @@ namespace Obligatorisk_Game_Framework.Creature
         public abstract IResponse ReceiveHit(DamageResponse hit);
         public abstract DamageResponse Hit();
         public abstract ItemsResponse Loot();
+        protected virtual WorldObjectResponse Death()
+        {
+            return new WorldObjectResponse($"{Name} is dead, due to health reaching 0.",false,new []{this});
+        }
         #endregion
     }
 }

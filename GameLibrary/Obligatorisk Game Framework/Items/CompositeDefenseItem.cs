@@ -9,7 +9,7 @@ namespace Obligatorisk_Game_Framework.Items
 {
     public class CompositeDefenseItem : IDefenseItem
     {
-        public CompositeDefenseItem(double defense, IEnumerable<IDamageType> types, IEnumerable<IDefenseItem> defensiveItems)
+        public CompositeDefenseItem(IEnumerable<IDefenseItem> defensiveItems)
         {
             DefensiveItems = defensiveItems;
             Name = nameof(CompositeDefenseItem);

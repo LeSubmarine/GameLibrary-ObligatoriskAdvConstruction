@@ -10,7 +10,7 @@ namespace Obligatorisk_Game_Framework.UtilityTools
     {
         public static IResponse IsSameOrVariant(Type baseClass, Type otherClass, bool onlyInheritCheck = false)
         {
-            if (otherClass.GetType().IsSubclassOf(baseClass))
+            if (otherClass.IsSubclassOf(baseClass))
             {
                 return new SuccessResponse($"{otherClass.Name} inherits from {baseClass.Name}.");
             }

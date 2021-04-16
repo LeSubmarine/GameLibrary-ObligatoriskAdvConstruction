@@ -84,9 +84,9 @@ namespace Obligatorisk_Game_Framework.World
         /// <returns>Returns an IResponse with a IEnumerable containing the neighbors if any.</returns>
         public WorldObjectResponse GetNeighbors(double range, World inhabitedWorld)
         {
-            IEnumerable<WorldObject> otherObjects = inhabitedWorld.WorldObjectsManager.GetWorldObjects();
+            WorldObjectResponse otherObjects = inhabitedWorld.WorldObjectsManager.GetWorldObjects();
             var neighbors =
-                from worldObject in otherObjects
+                from worldObject in otherObjects.WorldObjects
                 where worldObject != this &&
                       worldObject.Position.X < this.Position.X + range &&
                       worldObject.Position.X > this.Position.X - range &&
@@ -108,6 +108,13 @@ namespace Obligatorisk_Game_Framework.World
                 null
             );
         }
+
+        public IResponse Act()
+        {
+            throw new NotImplementedException();
+        }
+
+
         #region OverridesForOperators
         public override bool Equals(object obj)
         {
