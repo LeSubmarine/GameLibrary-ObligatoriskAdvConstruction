@@ -14,5 +14,10 @@ namespace Obligatorisk_Game_Framework.Combat
         /// The Types of damage this object deals.
         /// </summary>
         public IEnumerable<IDamageType> DamageTypes { get; set; }
+
+        /// <summary>
+        /// How strong is this object.
+        /// </summary>
+        public double Power { get; set; }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Game.Injected_Classes;
 using Obligatorisk_Game_Framework.Combat;
 using Obligatorisk_Game_Framework.Creature;
 using Obligatorisk_Game_Framework.Creature.ItemManagement;

@@ -7,7 +7,7 @@ namespace Obligatorisk_Game_Framework.Items.LootTables
     {
         #region Methods
         public Dictionary<IItem, double> ItemsWithWeight();
-        public ItemsResponse Loot(Dictionary<IItem, double> itemsWithWeight);
+        public ItemsResponse Loot(Dictionary<IItem, double> itemsWithWeight = null);
         #endregion
     }
 }

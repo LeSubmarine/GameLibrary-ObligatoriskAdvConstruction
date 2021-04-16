@@ -26,7 +26,7 @@ namespace Obligatorisk_Game_Framework.Creature.ItemManagement
         /// <param name="defaultDefenseItem">The default item for defense items, defaults to null.</param>
         /// <param name="defaultAttackItem">The default item for attack items, defaults to null.</param>
         /// <param name="defaultMiscItem">The default item for miscellaneous items, defaults to null.</param>
-        public GearLoadOut(GearSlots gearSlots, IDefenseItem defaultDefenseItem = null, IAttackItem defaultAttackItem = null, IWearable defaultMiscItem = null)
+        public GearLoadOut(GearSlots gearSlots, IDefenseItem defaultDefenseItem, IAttackItem defaultAttackItem = null, IWearable defaultMiscItem = null)
         {
             //Loading default items
             _defaultDefenseItem = defaultDefenseItem;

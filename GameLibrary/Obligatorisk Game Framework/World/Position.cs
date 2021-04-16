@@ -10,8 +10,16 @@ namespace Obligatorisk_Game_Framework.World
     public class Position
     {
         #region Constructor
-
+        public Position(int x, int y, int width, int height)
+        {
+            X = x;
+            Y = y;
+            Width = width;
+            Height = height;
+        }
         #endregion
+
+
         #region Properties
         /// <summary>
         /// Defines the absolute X value of a position.
