@@ -30,7 +30,15 @@ namespace Obligatorisk_Game_Framework.Creature
         #region Methods
         public override IResponse ReceiveHit(DamageResponse hit)
         {
-            throw new NotImplementedException();
+            List<DamageResponse> allPossibleDamage = new List<DamageResponse>();
+            foreach (var DefensiveGear in ItemManager.GearLoadOut.DefenseItems.Values)
+            {
+                allPossibleDamage.Add(DefensiveGear.Defend(hit));
+            }
+            double averageDamage = (from damages in allPossibleDamage select damages.Damage).Average()
+            int averageDamageRoundedUp = Convert.ToInt32(Math.Ceiling(averageDamage));
+
+            return null;
         }
         
         public override DamageResponse Hit()
