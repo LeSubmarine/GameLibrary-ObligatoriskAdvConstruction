@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Obligatorisk_Game_Framework.Combat.DamageTypes;
 using Obligatorisk_Game_Framework.Combat.DamageTypes.BaseDamageTypes;
-using Obligatorisk_Game_Framework.Responses.CombatResponses;
 
-namespace Obligatorisk_Game_Framework.Items.BaseItems.AnimalItems
+namespace Obligatorisk_Game_Framework.Items.BaseItems.AnimalIWearable
 {
     public class Hide : DefenseItem
     {

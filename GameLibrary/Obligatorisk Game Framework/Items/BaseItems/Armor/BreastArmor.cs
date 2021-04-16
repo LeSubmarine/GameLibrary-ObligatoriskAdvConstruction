@@ -5,9 +5,9 @@ using Obligatorisk_Game_Framework.Combat.DamageTypes;
 
 namespace Obligatorisk_Game_Framework.Items.BaseItems.Armor
 {
-    public class BreastPlate : DefenseItem
+    public class BreastArmor : DefenseItem
     {
-        public BreastPlate(double defense, IEnumerable<IDamageType> types, string name = nameof(BreastPlate), string slot = "breast") : base(name, slot, defense, types)
+        public BreastArmor(double defense, IEnumerable<IDamageType> types, string name = nameof(BreastArmor), string slot = "breast") : base(name, slot, defense, types)
         {
         }
     }

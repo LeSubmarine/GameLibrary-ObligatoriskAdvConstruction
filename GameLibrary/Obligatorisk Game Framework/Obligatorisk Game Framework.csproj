@@ -5,4 +5,9 @@
     <RootNamespace>Obligatorisk_Game_Framework</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Creature\BaseCreatures\Humanoid\Human\" />
+    <Folder Include="Creature\BaseCreatures\Humanoid\Elf\" />
+  </ItemGroup>
+
 </Project>

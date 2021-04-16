@@ -5,7 +5,7 @@ using Obligatorisk_Game_Framework.Creature.BaseCreatures.Humanoid;
 using Obligatorisk_Game_Framework.Creature.CreatureFactory;
 using Obligatorisk_Game_Framework.Creature.ItemManagement;
 using Obligatorisk_Game_Framework.Items;
-using Obligatorisk_Game_Framework.Items.BaseItems.AnimalItems;
+using Obligatorisk_Game_Framework.Items.BaseItems.AnimalIWearable;
 using Obligatorisk_Game_Framework.Items.LootTables;
 using Obligatorisk_Game_Framework.Responses;
 using Obligatorisk_Game_Framework.UtilityTools;

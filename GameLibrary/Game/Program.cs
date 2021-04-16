@@ -65,8 +65,8 @@ namespace Game
                 bigGuyCreature.ItemManager.Inventory.AddItems(new ItemsResponse("Adding startup items", "GOD",
                     new IItem[]
                     {
-                        new BreastPlate(10, new[] {new PhysicalDamageType(),}),
-                        new Helmet(5, new[] {new PhysicalDamageType(),}),
+                        new BreastArmor(10, new[] {new PhysicalDamageType(),}),
+                        new HeadArmor(5, new[] {new PhysicalDamageType(),}),
                         new Sword(new IDamageType[] {new PhysicalDamageType(),new FireDamageType(2) },10)
                     }));
                 bigGuyCreature.ItemManager.Inventory.GetItems().Value.Where(a => TypeComparer.IsSameOrVariant(typeof(IWearable),a.GetType()).SuccessValue).ToList().ForEach(a =>
@@ -77,8 +77,8 @@ namespace Game
                 smoll.ItemManager.AddItems(new ItemsResponse("Adding startup items", "GOD",
                     new IItem[]
                     {
-                        new BreastPlate(13, new IDamageType[] {new PhysicalDamageType(), new FireDamageType(),}),
-                        new Helmet(15, new IDamageType[] {new PhysicalDamageType(), new FireDamageType()}),
+                        new BreastArmor(13, new IDamageType[] {new PhysicalDamageType(), new FireDamageType(),}),
+                        new HeadArmor(15, new IDamageType[] {new PhysicalDamageType(), new FireDamageType()}),
                         new Sword(new IDamageType[] {new PhysicalDamageType()}, 5),
                     }));
 

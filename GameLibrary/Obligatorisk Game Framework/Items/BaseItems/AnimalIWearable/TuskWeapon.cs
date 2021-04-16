@@ -2,7 +2,7 @@
 using Obligatorisk_Game_Framework.Combat.DamageTypes;
 using Obligatorisk_Game_Framework.Combat.DamageTypes.BaseDamageTypes;
 
-namespace Obligatorisk_Game_Framework.Items.BaseItems.AnimalItems
+namespace Obligatorisk_Game_Framework.Items.BaseItems.AnimalIWearable
 {
     public class TuskWeapon : AttackItem
     {
