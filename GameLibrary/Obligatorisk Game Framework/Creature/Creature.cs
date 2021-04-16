@@ -25,6 +25,7 @@ namespace Obligatorisk_Game_Framework.Creature
         {
             Hitpoints = hitpoints;
             ItemManager = itemManager;
+            LootTable = lootTable;
         }
         #endregion
 

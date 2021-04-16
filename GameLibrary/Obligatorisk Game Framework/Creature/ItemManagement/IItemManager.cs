@@ -40,11 +40,11 @@ namespace Obligatorisk_Game_Framework.Creature.ItemManagement
 
         #region Inventory delegates
         /// <summary>
-        /// Adds an IItem to the inventory.
+        /// Adds an Enumerable of IItems to the inventory.
         /// </summary>
-        /// <param name="item">item is the IItem object getting added to the inventory.</param>
+        /// <param name="item">items is the ItemsResponse object with an IEnumerable of IItems getting added to the inventory.</param>
         /// <returns>Returns a IResponse describing the operation.</returns>
-        public AddItemDelegate AddItem { get; set; }
+        public AddItemsDelegate AddItems { get; set; }
 
         /// <summary>
         /// Gets all the items in the inventory.
@@ -67,7 +67,7 @@ namespace Obligatorisk_Game_Framework.Creature.ItemManagement
         public delegate IResponse DeEquipGearDelegate(IWearable item);
 
 
-        public delegate IResponse AddItemDelegate(IItem item);
+        public delegate IResponse AddItemsDelegate(ItemsResponse items);
         public delegate IResponse RemoveItemDelegate(IItem item);
 
         

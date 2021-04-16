@@ -9,11 +9,11 @@ namespace Obligatorisk_Game_Framework.Creature.ItemManagement
     public interface IInventory
     {
         /// <summary>
-        /// Takes an object that implements IItem and stores it in the inventory.
+        /// Takes a IEnumerable of objects that implements IItem and stores them in the inventory.
         /// </summary>
-        /// <param name="item">The object that is getting stored in the inventory.</param>
+        /// <param name="items">An response with the items that will be getting stored in the inventory.</param>
         /// <returns>Returns a response to describe the result of the operation.</returns>
-        public IResponse AddItem(IItem item);
+        public IResponse AddItems(ItemsResponse items);
         
         /// <summary>
         /// Removes an IItem object from the inventory, if it exists.

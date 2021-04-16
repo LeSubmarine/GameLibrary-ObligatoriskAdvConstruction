@@ -34,7 +34,7 @@ namespace Game
             WorldObject obj = newWorld.WorldObjectsManager.GetWorldObjects().WorldObjects.First();
             if (TypeComparer.IsSameOrVariant(typeof(Creature), obj.GetType()).SuccessValue)
             {
-                ((Creature) obj).ItemManager.AddItem(new Sword(new[] {new PhysicalDamageType()}, 5));
+                ((Creature) obj).ItemManager.AddItems(new ItemsResponse("Adding item", "GOD",new []{ new Sword(new[] { new PhysicalDamageType() }, 5) }));
                 ((Creature) obj).ItemManager.EquipGear((IAttackItem)((Creature) obj).ItemManager.GetItems().Value.First());
                 while (true)
                 {
@@ -62,13 +62,51 @@ namespace Game
                 Creature bigGuyCreature = (new HumanoidConcreteFactory(5,"BIGG GUY")).MakeCreature();
                 Creature smoll = (new HumanoidConcreteFactory(1)).MakeCreature();
 
-                bigGuyCreature.ItemManager.Inventory.AddItem(new BreastPlate(10, new[] {new PhysicalDamageType(),}));
-                bigGuyCreature.ItemManager.Inventory.AddItem(new Helmet(5, new[] {new PhysicalDamageType(),}));
-                bigGuyCreature.ItemManager.Inventory.AddItem(new Sword(new IDamageType[] {new PhysicalDamageType(),new FireDamageType(2) },10));
-                bigGuyCreature.ItemManager.Inventory.GetItems().Value.Where(a).ToList().ForEach(a =>
+                bigGuyCreature.ItemManager.Inventory.AddItems(new ItemsResponse("Adding startup items", "GOD",
+                    new IItem[]
                     {
-                        bigGuyCreature.ItemManager.GearLoadOut.EquipItem(a);
+                        new BreastPlate(10, new[] {new PhysicalDamageType(),}),
+                        new Helmet(5, new[] {new PhysicalDamageType(),}),
+                        new Sword(new IDamageType[] {new PhysicalDamageType(),new FireDamageType(2) },10)
+                    }));
+                bigGuyCreature.ItemManager.Inventory.GetItems().Value.Where(a => TypeComparer.IsSameOrVariant(typeof(IWearable),a.GetType()).SuccessValue).ToList().ForEach(a =>
+                    {
+                        bigGuyCreature.ItemManager.GearLoadOut.EquipItem((IWearable)a);
                     });
+
+                smoll.ItemManager.AddItems(new ItemsResponse("Adding startup items", "GOD",
+                    new IItem[]
+                    {
+                        new BreastPlate(13, new IDamageType[] {new PhysicalDamageType(), new FireDamageType(),}),
+                        new Helmet(15, new IDamageType[] {new PhysicalDamageType(), new FireDamageType()}),
+                        new Sword(new IDamageType[] {new PhysicalDamageType()}, 5),
+                    }));
+
+
+                smoll.ItemManager.Inventory.GetItems().Value.Where(a => TypeComparer.IsSameOrVariant(typeof(IWearable), a.GetType()).SuccessValue).ToList().ForEach(a =>
+                {
+                    smoll.ItemManager.GearLoadOut.EquipItem((IWearable)a);
+                });
+
+                Console.WriteLine("AIT FIGHT BOIS");
+                bool oneAlive = true;
+                while (oneAlive)
+                {
+                    oneAlive = smoll.ReceiveHit(bigGuyCreature.Hit()).SuccessValue && oneAlive;
+                    if (oneAlive)
+                    {
+                        oneAlive = bigGuyCreature.ReceiveHit(smoll.Hit()).SuccessValue && oneAlive; 
+                    }
+                }
+
+                if (smoll.Hitpoints > 0)
+                {
+                    smoll.ItemManager.AddItems(bigGuyCreature.Loot());
+                }
+                else
+                {
+                    bigGuyCreature.ItemManager.AddItems(smoll.Loot());
+                }
             }
         }
     }

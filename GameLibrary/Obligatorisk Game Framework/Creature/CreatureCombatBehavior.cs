@@ -57,6 +57,10 @@ namespace Obligatorisk_Game_Framework.Creature
         
         public override DamageResponse Hit()
         {
+            if (!(Hitpoints > 0))
+            {
+                return new DamageResponse($"{Name} is dead and can't fight",false,0,this,null);
+            }
             Random random = new Random(DateTime.Now.Millisecond);
             IDamageDealing weapon = PickDamageDealing();
             double baseDamage = weapon.Power * LevelStrengthModifier(Level);

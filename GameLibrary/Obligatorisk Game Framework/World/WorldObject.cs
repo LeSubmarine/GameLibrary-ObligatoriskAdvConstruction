@@ -114,6 +114,14 @@ namespace Obligatorisk_Game_Framework.World
             throw new NotImplementedException();
         }
 
+        public IResponse Move(int newX, int newY)
+        {
+            this.Position.X = newX;
+            this.Position.Y = newY;
+
+            return new SuccessResponse($"{Name} han moved to the coordinates {newX},{newY}");
+        }
+
 
         #region OverridesForOperators
         public override bool Equals(object obj)

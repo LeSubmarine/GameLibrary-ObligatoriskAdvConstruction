@@ -54,7 +54,7 @@ namespace Obligatorisk_Game_Framework.Creature.BaseCreatures.Humanoid
         }
 
 
-        private string GetName()
+        protected virtual string GetName()
         {
             return "";
         }
