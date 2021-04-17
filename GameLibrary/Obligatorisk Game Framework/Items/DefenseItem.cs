@@ -22,7 +22,7 @@ namespace Obligatorisk_Game_Framework.Items
         public double Defense { get; set; }
         public IEnumerable<IDamageType> Types { get; set; }
 
-        public DamageResponse Defend(DamageResponse damage)
+        public virtual DamageResponse Defend(DamageResponse damage)
         {
             double newDamage = damage.Damage;
             double totalWeight = (from types in damage.DamageSource.DamageTypes select types.Weight).Sum();

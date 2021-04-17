@@ -7,7 +7,7 @@ namespace Obligatorisk_Game_Framework.Items.BaseItems.Armor
 {
     public class BreastArmor : DefenseItem
     {
-        public BreastArmor(double defense, IEnumerable<IDamageType> types, string name = nameof(BreastArmor), string slot = "breast") : base(name, slot, defense, types)
+        public BreastArmor(double defense = 10, IEnumerable<IDamageType> types = null, string name = nameof(BreastArmor), string slot = "breast") : base(name, slot, defense, types)
         {
         }
     }
