@@ -24,7 +24,11 @@ namespace Obligatorisk_Game_Framework.Items.BaseItems.Armor.AdvancedArmor.Plate
             }
 
             //todo damage skal regnes så plate fjerne noget af physical skaden.
-            attack.Damage = /*(attack.Damage * (1 / physicalPercent)) * (1 - physicalPercent);*/
+            if (physicalPercent > random.NextDouble())
+            {
+                
+            }
+            attack.Damage = (attack.Damage * physicalPercent) + (attack.Damage * (1 - physicalPercent));
             
             return null;
         }
