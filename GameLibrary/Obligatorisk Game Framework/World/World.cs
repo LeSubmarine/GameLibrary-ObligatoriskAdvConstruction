@@ -26,40 +26,12 @@ namespace Obligatorisk_Game_Framework.World
 
             if (!string.IsNullOrEmpty(configFilePath))
             {
-                using (XmlReader reader = XmlReader.Create(configFilePath))
-                {
-                    while (reader.Read())
-                    {
-                        if (reader.IsStartElement())
-                        {
-                            int value;
-                            try
-                            {
-                                 value = reader.ReadElementContentAsInt();
-                            }
-                            catch (Exception)
-                            {
-                                value = 0;
-                            }
-
-                            switch (reader.Name)
-                            {
-                                case "MaxY":
-                                    if (value > 0)
-                                    {
-                                        MaxY = value; 
-                                    }
-                                    break;
-                                case "MaxX":
-                                    if (value > 0)
-                                    {
-                                        MaxX = value;
-                                    }
-                                    break;
-                            }
-                        }
-                    }
-                } 
+                XmlDocument document = new XmlDocument();
+                document.Load(configFilePath);
+                XmlNode maxX = document.DocumentElement.SelectSingleNode("MaxX");
+                XmlNode maxY = document.DocumentElement.SelectSingleNode("MaxY");
+                MaxY = Convert.ToInt32(maxY.InnerText.Trim());
+                MaxX = Convert.ToInt32(maxX.InnerText.Trim());
             }
 
             if (MaxX == 0)

@@ -18,7 +18,7 @@ namespace Obligatorisk_Game_Framework.Items.BaseItems.Armor.AdvancedArmor.Plate
 
         public override DamageResponse Defend(DamageResponse damage)
         {
-            damage.Damage = PlateDefense.TransformDamage(damage, Efficiency);
+            damage = PlateDefense.TransformDamage(damage, Efficiency);
             return base.Defend(damage);
         }
     }

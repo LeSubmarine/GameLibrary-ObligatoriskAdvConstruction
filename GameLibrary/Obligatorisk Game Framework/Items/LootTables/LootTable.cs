@@ -4,7 +4,7 @@ using Obligatorisk_Game_Framework.Responses;
 
 namespace Obligatorisk_Game_Framework.Items.LootTables
 {
-    class LootTable : ILootTable
+    public class LootTable : ILootTable
     {
         #region Methods
         public Dictionary<IItem, double> ItemsWithWeight()

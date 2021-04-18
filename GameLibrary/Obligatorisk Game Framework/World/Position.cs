@@ -14,8 +14,8 @@ namespace Obligatorisk_Game_Framework.World
         {
             X = x;
             Y = y;
-            Width = width;
-            Height = height;
+            //Width = width;
+            //Height = height;
         }
         #endregion
 
@@ -31,15 +31,15 @@ namespace Obligatorisk_Game_Framework.World
         /// </summary>
         public int Y { get; set; }
 
-        /// <summary>
-        /// Width of the owner.
-        /// </summary>
-        public int Width { get; set; }
+        ///// <summary>
+        ///// Width of the owner.
+        ///// </summary>
+        //public int Width { get; set; }
 
-        /// <summary>
-        /// Height of the owner.
-        /// </summary>
-        public int Height { get; set; }
+        ///// <summary>
+        ///// Height of the owner.
+        ///// </summary>
+        //public int Height { get; set; }
         #endregion
     }
 }

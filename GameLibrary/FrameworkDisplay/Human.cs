@@ -37,5 +37,11 @@ namespace FrameworkDisplay
             this.ItemManager.AddItems(items);
             return new ItemsResponse("Items picked up",items.Origin,items.Value);
         }
+
+
+        public override IResponse Move(int newX, int newY)
+        {
+            return base.Move(Position.X + newX, Position.Y + newY);
+        }
     }
 }

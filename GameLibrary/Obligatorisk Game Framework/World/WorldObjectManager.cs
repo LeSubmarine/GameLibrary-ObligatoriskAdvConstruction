@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Obligatorisk_Game_Framework.Responses;
+using Obligatorisk_Game_Framework.UtilityTools;
 
 namespace Obligatorisk_Game_Framework.World
 {
@@ -17,6 +18,9 @@ namespace Obligatorisk_Game_Framework.World
 
         public WorldObjectResponse GetWorldObjects()
         {
+            _worldObjects.RemoveAll(a =>
+                a.Removable && TypeComparer.IsSameOrVariant(typeof(Creature.Creature), a.GetType()).SuccessValue ?
+                ((Creature.Creature) a).Hitpoints == 0 : false);
             return new WorldObjectResponse(
                 $"These are the objects in {this}",
                 true,

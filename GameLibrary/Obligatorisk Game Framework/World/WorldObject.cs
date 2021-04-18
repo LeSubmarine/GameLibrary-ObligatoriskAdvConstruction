@@ -82,12 +82,12 @@ namespace Obligatorisk_Game_Framework.World
         /// <param name="range">The range to find neighbors.</param>
         /// <param name="inhabitedWorld">The world the object lives in.</param>
         /// <returns>Returns an IResponse with a IEnumerable containing the neighbors if any.</returns>
-        public WorldObjectResponse GetNeighbors(double range, World inhabitedWorld)
+        public virtual WorldObjectResponse GetNeighbors(double range, World inhabitedWorld)
         {
             WorldObjectResponse otherObjects = inhabitedWorld.WorldObjectsManager.GetWorldObjects();
             var neighbors =
                 from worldObject in otherObjects.WorldObjects
-                where worldObject != this &&
+                where !ReferenceEquals(worldObject,this) &&
                       worldObject.Position.X < this.Position.X + range &&
                       worldObject.Position.X > this.Position.X - range &&
                       worldObject.Position.Y < this.Position.Y + range &&
@@ -114,7 +114,7 @@ namespace Obligatorisk_Game_Framework.World
             throw new NotImplementedException();
         }
 
-        public IResponse Move(int newX, int newY)
+        public virtual IResponse Move(int newX, int newY)
         {
             this.Position.X = newX;
             this.Position.Y = newY;
