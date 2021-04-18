@@ -11,18 +11,15 @@ namespace FrameworkDisplay
     {
         public GameEngineWorker()
         {
-            WorldOject = new World(new WorldObjectManager());
+            WorldObject = new World(new WorldObjectManager(),"config.xml");
             Random = new Random(DateTime.Now.Millisecond);
             //TraceSourceSingleton.Ts().Listeners.Add(new ConsoleTraceListener());
 
         }
 
-        public World WorldOject { get; set; }
+        public World WorldObject { get; set; }
         public Random Random { get; set; }
 
-        public void AddPlayer()
-        {
-
-        }
+        public Human Player { get; set; }
     }
 }

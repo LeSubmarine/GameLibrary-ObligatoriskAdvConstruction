@@ -15,7 +15,7 @@ using Obligatorisk_Game_Framework.World;
 
 namespace FrameworkDisplay
 {
-    class Human : HumanoidCreature
+    public class Human : HumanoidCreature
     {
         public Human(string name, Position position) : base(1, 100, new ItemManager(new Inventory(), new HumanoidLoadOut(new HumanoidSlots(),new HumanoidSkin("",new IDamageType[]{new PhysicalDamageType(), }),new HumanoidFists())), name, false, position, null)
         {

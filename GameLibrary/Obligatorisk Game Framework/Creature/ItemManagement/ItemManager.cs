@@ -16,7 +16,7 @@
             Inventory = inventory;
             GearLoadOut = gearLoadOut;
 
-            AddItem = Inventory.AddItem;
+            AddItems = Inventory.AddItems;
             RemoveItem = Inventory.RemoveItem;
             GetItems = Inventory.GetItems;
 
@@ -31,7 +31,7 @@
         public GearLoadOut GearLoadOut { get; set; }
         public IInventory Inventory { get; set; }
 
-        public IItemManager.AddItemDelegate AddItem { get; set; }
+        public IItemManager.AddItemsDelegate AddItems { get; set; }
         public IItemManager.RemoveItemDelegate RemoveItem { get; set; }
         public IItemManager.GetItemsDelegate GetItems { get; set; }
 

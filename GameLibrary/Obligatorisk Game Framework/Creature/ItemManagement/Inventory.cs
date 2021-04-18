@@ -13,14 +13,14 @@ namespace Obligatorisk_Game_Framework.Creature.ItemManagement
             _items = new List<IItem>();
         }
 
-        public IResponse AddItem(IItem item)
+        public IResponse AddItems(ItemsResponse items)
         {
-            if (item != null)
+            if (items != null)
             {
-                _items.Add(item);
-                return new SuccessResponse($"The item: {item.Name} was added to the inventory.");
+                _items.AddRange(items.Value);
+                return new SuccessResponse($"The items were added to the inventory.");
             }
-            return new FailureResponse("The item could not be added to the inventory as it was null.");
+            return new FailureResponse("The items could not be added to the inventory as it was null.");
         }
 
         public IResponse RemoveItem(IItem item)
